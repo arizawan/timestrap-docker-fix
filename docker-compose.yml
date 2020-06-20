@@ -11,7 +11,7 @@ services:
       - redis
     environment:
       - DJANGO_SETTINGS_MODULE=timestrap.settings.docker
-      - SECRET_KEY=CHANGE-ME
+      - SECRET_KEY=thunder.32
     depends_on:
       - db
       - redis
@@ -19,6 +19,7 @@ services:
   db:
     image: postgres
     environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
       - PGDATA=/db-data
     volumes:
       - db:/db-data

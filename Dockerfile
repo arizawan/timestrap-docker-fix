@@ -8,6 +8,9 @@ ENV PYTHONUNBUFFERED 1
 RUN apk add --no-cache python3 python3-dev nodejs nodejs-dev yarn \
     postgresql-dev gcc musl-dev libffi-dev
 
+RUN /usr/bin/python3 -m ensurepip
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 COPY Pipfile Pipfile.lock package.json yarn.lock /srv/timestrap/
 RUN pip3 install --upgrade pip \
     && pip3 install pipenv \
