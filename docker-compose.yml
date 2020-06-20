@@ -1,14 +1,12 @@
-version: "3"
+version: "2"
 
 services:
   web:
-    build: .
+    image: arizawan/timestrap
+    #build: .
     command: daphne timestrap.asgi:application --port 80 --bind 0.0.0.0 -v2
     ports:
       - "80:80"
-    depends_on:
-      - db
-      - redis
     environment:
       - DJANGO_SETTINGS_MODULE=timestrap.settings.docker
       - SECRET_KEY=thunder.32
