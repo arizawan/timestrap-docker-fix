@@ -10,14 +10,19 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=timestrap.settings.docker
       - SECRET_KEY=thunder.32
+      - DB_USER=timesadmin
+      - DB_PASS=nomog0987g
     depends_on:
       - db
       - redis
 
   db:
     image: postgres
+    #ports:
+    #  - "5432:5432"
     environment:
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=timesadmin
+      - POSTGRES_PASSWORD=nomog0987g
       - PGDATA=/db-data
     volumes:
       - db:/db-data

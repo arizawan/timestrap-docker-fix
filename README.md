@@ -82,6 +82,20 @@ cloned:
     docker-compose up --detach --build
     docker-compose exec web python3 manage.py migrate
 
+If you want to reset everything in Docker compose, You will have to stop and remove all containers including Database Volume. This are your commands 
+:
+
+    docker-compose stop
+    docker-compose rm -v
+
+If for some reason the volume was not deleted properly, the database will not be re-initialized. To solve this issue, check all volumes :
+
+    docker volume ls
+
+Find volume named like "timestrap-docker-fix_db" and delete it with :
+
+    docker volume rm timestrap-docker-fix_db
+
 All data will be kept during this process and you'll have the latest version
 of Timestrap.
 
